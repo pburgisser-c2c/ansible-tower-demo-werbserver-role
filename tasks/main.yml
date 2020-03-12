@@ -1,0 +1,13 @@
+---
+- name: Install httpd
+  yum:
+    name: httpd
+    state: present
+  notify: start and enable httpd
+  become: true
+- name: Write helloworld
+  copy:
+    dest: /var/www/html/helloworld.html
+    content: "Hello, I'm a demo"
+  become: true
+  tags: helloworld
